@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="java">
+<head>
+    <meta charset="UTF-8">
+    <title>Проекты</title>
+</head>
+<body>
+<h2>Список проектов:</h2>
+<form method="get" th:each="p : ${projectList}">
+    <ul>
+        <li th:text="${p}">Id</li>
+    </ul>
+</form>
+<br>
+
+
+<h2>Найти проект по Id:</h2>
+<form method="get" th:action="@{/project/get}" th:object="${getById}">
+    <label for="getById">Введите Id нужного проекта:</label>
+    <input type="text" th:field="*{id}" id="getById">
+    <br>
+    <input type="submit" value="Найти"/>
+</form>
+<br>
+
+
+<h2>Добавление нового проекта:</h2>
+<form method="post" th:action="@{/project/create}" th:object="${newProject}">
+    <label for="name">Введите название нового проекта:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <br>
+    <label for="customer">Заказчик:</label>
+    <input type="text" th:field="*{customer}" id="customer">
+    <br>
+    <label for="duration">Длительность проекта:</label>
+    <input type="number" th:field="*{duration}" id="duration">
+    <br>
+    <label for="methodology">Методология:</label>
+    <input type="text" th:field="*{methodology}" id="methodology">
+    <br>
+    <label for="team_id">Id существующей команды, состоящей в проекте:</label>
+    <input type="number" th:field="*{team_id}" id="team_id">
+    <br>
+    <input type="submit" value="Добавить"/>
+</form>
+<br>
+
+
+<h2>Удаление существующего проекта:</h2>
+<form method="post" th:action="@{/project/delete}" th:object="${deleteProject}">
+    <label for="id_delete">Введите Id проекта, который необходимо удалить:</label>
+    <input type="number" th:field="*{id}" id="id_delete">
+    <br>
+    <input type="submit" value="Удалить"/>
+</form>
+<br>
+
+
+<h2>Редактирование существующего проекта:</h2>
+<form method="post" th:action="@{/project/update}" th:object="${updateProject}">
+    <label for="id_update">Введите Id проекта, в котором необходимо изменить значения:</label>
+    <input type="number" th:field="*{id}" id="id_update">
+    <br>
+    <label for="new_name">Введите новое название проекта:</label>
+    <input type="text" th:field="*{name}" id="new_name">
+    <br>
+    <label for="customer_update">Введите нового заказчика проекта:</label>
+    <input type="text" th:field="*{customer}" id="customer_update">
+    <br>
+    <label for="duration_update">Введите новую длительность проекта:</label>
+    <input type="number" th:field="*{duration}" id="duration_update">
+    <br>
+    <label for="methodology_update">Введите новую методологию проекта:</label>
+    <input type="text" th:field="*{methodology}" id="methodology_update">
+    <br>
+    <input type="submit" value="Редактировать"/>
+</form>
+</body>
+</html>

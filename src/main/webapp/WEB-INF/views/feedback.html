@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="java">
+<head>
+    <meta charset="UTF-8">
+    <title>Фидбеки</title>
+</head>
+<body>
+<h2>Список фидбеков:</h2>
+<form method="get" th:each="f : ${feedbackList}">
+    <ul>
+        <li th:text="${f}">Id</li>
+    </ul>
+</form>
+<br>
+
+
+<h2>Найти фидбек по Id:</h2>
+<form method="get" th:action="@{/feedback/get}" th:object="${getById}">
+    <label for="getById">Введите Id нужного работника:</label>
+    <input type="text" th:field="*{id}" id="getById">
+    <br>
+    <input type="submit" value="Найти"/>
+</form>
+<br>
+
+
+<h2>Добавление нового фидбека:</h2>
+<form method="post" th:action="@{/feedback/create}" th:object="${newFeedback}">
+    <label for="description">Описание фидбека:</label>
+    <input type="text" th:field="*{description}" id="description">
+    <br>
+    <label for="date">Дата фидбека:</label>
+    <input type="text" th:field="*{date}" id="date">
+    <br>
+    <label for="employee_id">Для какого работника создан фидбек? (Id):</label>
+    <input type="text" th:field="*{employee_id}" id="employee_id">
+    <br>
+    <input type="submit" value="Добавить"/>
+</form>
+<br>
+
+
+<h2>Удаление фидбека:</h2>
+<form method="post" th:action="@{/feedback/delete}" th:object="${deleteFeedback}">
+    <label for="id_delete">Введите Id фидбека, который необходимо удалить:</label>
+    <input type="number" th:field="*{id}" id="id_delete">
+    <br>
+    <input type="submit" value="Удалить"/>
+</form>
+<br>
+
+
+<h2>Редактирование существующего фидбека:</h2>
+<form method="post" th:action="@{/feedback/update}" th:object="${updateFeedback}">
+    <label for="id_update">Введите Id фидбека, в котором необходимо редактировать значения:</label>
+    <input type="number" th:field="*{id}" id="id_update">
+    <br>
+    <label for="description_update">Введите новый фидбек:</label>
+    <input type="text" th:field="*{description}" id="description_update">
+    <br>
+    <label for="date_update">Дата фидбека:</label>
+    <input type="text" th:field="*{date}" id="date_update">
+    <br>
+    <input type="submit" value="Редактировать"/>
+</form>
+</body>
+</html>

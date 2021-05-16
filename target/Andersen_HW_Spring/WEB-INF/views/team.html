@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="java">
+<head>
+    <meta charset="UTF-8">
+    <title>Команды</title>
+</head>
+<body>
+<h2>Список команд:</h2>
+<form method="get" th:each="t : ${teamList}">
+    <ul>
+        <li th:text="${t}">Id</li>
+    </ul>
+</form>
+<br>
+
+
+<h2>Найти команду по Id:</h2>
+<form method="get" th:action="@{/team/get}" th:object="${getById}">
+    <label for="getById">Введите Id нужной команды:</label>
+    <input type="text" th:field="*{id}" id="getById">
+    <br>
+    <input type="submit" value="Найти"/>
+</form>
+<br>
+
+
+<h2>Добавление новой команды:</h2>
+<form method="post" th:action="@{/team/create}" th:object="${newTeam}">
+    <label for="name">Введите название новой команды:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <br>
+    <input type="submit" value="Добавить"/>
+</form>
+<br>
+
+
+<h2>Удаление существующей команды:</h2>
+<form method="post" th:action="@{/team/delete}" th:object="${deleteTeam}">
+    <label for="id_delete">Введите Id команды, которую необходимо удалить:</label>
+    <input type="number" th:field="*{id}" id="id_delete">
+    <br>
+    <input type="submit" value="Удалить"/>
+</form>
+<br>
+
+
+<h2>Редактирование существующей команды:</h2>
+<form method="post" th:action="@{/team/update}" th:object="${updateTeam}">
+    <label for="id_update">Введите Id команды, в которой необходимо изменить значения:</label>
+    <input type="number" th:field="*{id}" id="id_update">
+    <br>
+    <label for="new_name">Введите новое название команды:</label>
+    <input type="text" th:field="*{name}" id="new_name">
+    <br>
+    <input type="submit" value="Редактировать"/>
+</form>
+</body>
+</html>

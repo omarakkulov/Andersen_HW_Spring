@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="java">
+<head>
+    <meta charset="UTF-8">
+    <title>Работники</title>
+</head>
+
+
+<body>
+<h2>Список работников:</h2>
+<form method="get" th:each="e : ${employeeList}">
+    <ul>
+        <li th:text="${e}">Id</li>
+    </ul>
+</form>
+<br>
+
+
+<h2>Найти работника по Id:</h2>
+<form method="get" th:action="@{/employee/get}" th:object="${getById}">
+    <label for="getById">Введите Id нужного работника:</label>
+    <input type="text" th:field="*{id}" id="getById">
+    <br>
+    <input type="submit" value="Найти"/>
+</form>
+<br>
+
+
+<h2>Добавление нового работника:</h2>
+<form method="post" th:action="@{/employee/create}" th:object="${newEmployee}">
+    <label for="first_name">Имя работника:</label>
+    <input type="text" th:field="*{first_name}" id="first_name">
+    <br>
+    <label for="last_name">Фамилия:</label>
+    <input type="text" th:field="*{last_name}" id="last_name">
+    <br>
+    <label for="email">Email:</label>
+    <input type="text" th:field="*{email}" id="email">
+    <br>
+    <label for="phone">Номер:</label>
+    <input type="text" th:field="*{phone}" id="phone">
+    <br>
+    <label for="date_of_birth">Дата рождения:</label>
+    <input type="text" th:field="*{date_of_birth}" id="date_of_birth">
+    <br>
+    <label for="experience">Опыт:</label>
+    <input type="number" th:field="*{experience}" id="experience">
+    <br>
+    <label for="date_of_employment">Дата начала работы:</label>
+    <input type="text" th:field="*{date_of_employment}" id="date_of_employment">
+    <br>
+    <label for="skill_level">Уровень программирования:</label>
+    <input type="text" th:field="*{skill_level}" id="skill_level">
+    <br>
+    <label for="eng_level">Уровень английского:</label>
+    <input type="text" th:field="*{eng_level}" id="eng_level">
+    <br>
+    <label for="skype">Skype:</label>
+    <input type="text" th:field="*{skype}" id="skype">
+    <br>
+    <label for="team_id">Id команды, в которой состоит работник:</label>
+    <input type="number" th:field="*{team_id}" id="team_id">
+    <br>
+    <label for="project_id">Id проекта, в котором состоит работник:</label>
+    <input type="number" th:field="*{project_id}" id="project_id">
+    <br>
+    <input type="submit" value="Добавить"/>
+</form>
+<br>
+
+
+<h2>Удаление работника:</h2>
+<form method="post" th:action="@{/employee/delete}" th:object="${deleteEmployee}">
+    <label for="id_delete">Введите Id работника, которого необходимо удалить:</label>
+    <input type="number" th:field="*{id}" id="id_delete">
+    <br>
+    <input type="submit" value="Удалить"/>
+</form>
+<br>
+
+
+<h2>Редактирование информации работника:</h2>
+<form method="post" th:action="@{/employee/update}" th:object="${updateEmployee}">
+    <label for="id_update">Введите Id работника, для которого необходимо редактировать значения:</label>
+    <input type="number" th:field="*{id}" id="id_update">
+    <br>
+    <label for="first_name_update">Имя работника:</label>
+    <input type="text" th:field="*{first_name}" id="first_name_update">
+    <br>
+    <label for="last_name_update">Фамилия:</label>
+    <input type="text" th:field="*{last_name}" id="last_name_update">
+    <br>
+    <label for="email_update">Email:</label>
+    <input type="text" th:field="*{email}" id="email_update">
+    <br>
+    <label for="phone_update">Номер:</label>
+    <input type="text" th:field="*{phone}" id="phone_update">
+    <br>
+    <label for="date_of_birth_update">Дата рождения:</label>
+    <input type="text" th:field="*{date_of_birth}" id="date_of_birth_update">
+    <br>
+    <label for="experience_update">Опыт:</label>
+    <input type="number" th:field="*{experience}" id="experience_update">
+    <br>
+    <label for="date_of_employment_update">Дата начала работы:</label>
+    <input type="text" th:field="*{date_of_employment}" id="date_of_employment_update">
+    <br>
+    <label for="skill_level_update">Уровень программирования:</label>
+    <input type="text" th:field="*{skill_level}" id="skill_level_update">
+    <br>
+    <label for="eng_level_update">Уровень английского:</label>
+    <input type="text" th:field="*{eng_level}" id="eng_level_update">
+    <br>
+    <label for="skype_update">Skype:</label>
+    <input type="text" th:field="*{skype}" id="skype_update">
+    <br>
+    <input type="submit" value="Редактировать"/>
+</form>
+</body>
+</html>
