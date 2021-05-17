@@ -13,7 +13,11 @@ import java.util.List;
 public class FeedbackService {
     private FeedbackDAO feedbackDAO;
 
-    @Autowired
+//    @Autowired
+//    public FeedbackService(FeedbackDAO feedbackDAO) {
+//        this.feedbackDAO = feedbackDAO;
+//    }
+
     public FeedbackService(FeedbackDAO feedbackDAO) {
         this.feedbackDAO = feedbackDAO;
     }

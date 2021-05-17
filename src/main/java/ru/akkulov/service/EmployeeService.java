@@ -1,7 +1,6 @@
 package ru.akkulov.service;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.akkulov.dao.EmployeeDAO;
 import ru.akkulov.model.Employee;
@@ -9,11 +8,15 @@ import ru.akkulov.model.Employee;
 import java.util.List;
 
 @Data
-@Component("employeeService")
+@Component("employeeServiceBean")
 public class EmployeeService {
     private EmployeeDAO employeeDAO;
+//
+//    @Autowired
+//    public EmployeeService(EmployeeDAO employeeDAO) {
+//        this.employeeDAO = employeeDAO;
+//    }
 
-    @Autowired
     public EmployeeService(EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }
@@ -21,6 +24,7 @@ public class EmployeeService {
     public EmployeeService() {
         this.employeeDAO = new EmployeeDAO();
     }
+
 
     public void create(Employee employee) {
         employeeDAO.create(employee);

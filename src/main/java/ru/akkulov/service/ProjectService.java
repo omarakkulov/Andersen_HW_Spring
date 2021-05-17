@@ -13,7 +13,11 @@ import java.util.List;
 public class ProjectService {
     private ProjectDAO projectDAO;
 
-    @Autowired
+//    @Autowired
+//    public ProjectService(ProjectDAO projectDAO) {
+//        this.projectDAO = projectDAO;
+//    }
+
     public ProjectService(ProjectDAO projectDAO) {
         this.projectDAO = projectDAO;
     }

@@ -13,7 +13,11 @@ import java.util.List;
 public class TeamService {
     private TeamDAO teamDAO;
 
-    @Autowired
+//    @Autowired
+//    public TeamService(TeamDAO teamDAO) {
+//        this.teamDAO = teamDAO;
+//    }
+
     public TeamService(TeamDAO teamDAO) {
         this.teamDAO = teamDAO;
     }
