@@ -18,6 +18,10 @@ public class ProjectService {
         this.projectDAO = projectDAO;
     }
 
+    public ProjectService() {
+        projectDAO = new ProjectDAO();
+    }
+
     public void create(Project project) {
         projectDAO.create(project);
     }

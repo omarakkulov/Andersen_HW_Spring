@@ -9,13 +9,17 @@ import ru.akkulov.model.Employee;
 import java.util.List;
 
 @Data
-@Component
+@Component("employeeService")
 public class EmployeeService {
     private EmployeeDAO employeeDAO;
 
     @Autowired
     public EmployeeService(EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
+    }
+
+    public EmployeeService() {
+        this.employeeDAO = new EmployeeDAO();
     }
 
     public void create(Employee employee) {

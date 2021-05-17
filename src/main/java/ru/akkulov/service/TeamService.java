@@ -18,6 +18,10 @@ public class TeamService {
         this.teamDAO = teamDAO;
     }
 
+    public TeamService() {
+        teamDAO = new TeamDAO();
+    }
+
     public void create(Team team) {
         teamDAO.create(team);
     }

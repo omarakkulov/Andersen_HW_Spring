@@ -18,6 +18,10 @@ public class FeedbackService {
         this.feedbackDAO = feedbackDAO;
     }
 
+    public FeedbackService() {
+        this.feedbackDAO = new FeedbackDAO();
+    }
+
     public void create(Feedback feedback) {
         feedbackDAO.create(feedback);
     }
